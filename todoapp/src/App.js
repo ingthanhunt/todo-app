@@ -42,7 +42,8 @@ function App() {
               text: 'Add task succesfully.',
               showConfirmButton: false,
               timer: 1500,
-              iconColor: '#2196F3'
+              iconColor: '#2196F3',
+              width: '20em'
             })
             console.log(res.data);
             setText("");
@@ -59,7 +60,8 @@ function App() {
               text: 'Update task succesfully.',
               showConfirmButton: false,
               timer: 1500,
-              iconColor: '#2196F3'
+              iconColor: '#2196F3',
+              width: '20em'
             })
             console.log(res.data);
             setText("");
@@ -80,7 +82,8 @@ function App() {
       showCancelButton: true,
       confirmButtonColor: '#2196F3',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes'
+      confirmButtonText: 'Yes',
+      width: '20em'
     }).then((res) => {
       if(res.isConfirmed) {
         axios.post("http://localhost:3000/delete-todo", { _id })
