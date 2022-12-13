@@ -1,5 +1,6 @@
 import './App.css';
 import { useState, useEffect, useContext } from 'react';
+import Swal from 'sweetalert2';
 import axios from "axios";
 import Task from './components/Task';
 import { ThemeContext } from './components/theme-context';
@@ -35,28 +36,58 @@ function App() {
     if (isUpdating === "") {
       axios.post("http://localhost:3000/save-todo", { text, date })
         .then((res) => {
-          console.log(res.data);
-          setText("");
-          setDate(new Date());
+          if(res.status === 200) {
+            Swal.fire({
+              icon: 'success',
+              text: 'Add task succesfully.',
+              showConfirmButton: false,
+              timer: 1500,
+              iconColor: '#2196F3'
+            })
+            console.log(res.data);
+            setText("");
+            setDate(new Date());
+          }
         })
         .catch((err) => console.log(err));
     }else{
       axios.post("http://localhost:3000/update-todo", { _id: isUpdating, text, date, isDone })
         .then((res) => {
-          console.log(res.data);
-          setText("");
-          setUpdating("");
-          setDate(new Date());
-          setDone(false)
+          if(res.status === 200) {
+            Swal.fire({
+              icon: 'success',
+              text: 'Update task succesfully.',
+              showConfirmButton: false,
+              timer: 1500,
+              iconColor: '#2196F3'
+            })
+            console.log(res.data);
+            setText("");
+            setUpdating("");
+            setDate(new Date());
+            setDone(false);
+          }
         })
         .catch((err) => console.log(err));
     }
   }
 
   const deleteTodo = (_id) => {
-    axios.post("http://localhost:3000/delete-todo", { _id })
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You can't undo this action",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#2196F3',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((res) => {
+      if(res.isConfirmed) {
+        axios.post("http://localhost:3000/delete-todo", { _id })
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
+      }
+    })
   }
 
   const updateTodoStatus = (_id, isDone) => {
