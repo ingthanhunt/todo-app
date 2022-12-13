@@ -120,6 +120,10 @@ function App() {
         </div>
 
         <div className="list">
+          <div className='title'>
+            <div className = "text">Todo</div>
+            <div className = "date">Due Date</div>
+          </div>
           {todo.map(task => 
           <Task
             key={task._id}

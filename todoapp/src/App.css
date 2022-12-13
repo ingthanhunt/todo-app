@@ -46,8 +46,17 @@ h1{
   color: white;
   padding: 1.5rem 3 rem;
   border-radius: 5px;
-  height: 60px;
-  
+  height: 60px; 
+}
+
+.title {
+  position: relative;
+  margin-top: 1rem;
+  background-color: #0b5fa3;
+  color: white;
+  padding: 1.5rem 3 rem;
+  border-radius: 5px;
+  height: 40px; 
 }
 
 .ri-checkbox-indeterminate-line {
