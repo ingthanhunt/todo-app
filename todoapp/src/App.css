@@ -41,7 +41,7 @@ h1{
 
 .todo {
   position: relative;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   background-color: #2196F3;
   color: white;
   padding: 1.5rem 3 rem;
@@ -56,10 +56,10 @@ h1{
   color: white;
   padding: 1.5rem 3 rem;
   border-radius: 5px;
-  height: 40px; 
+  height: 30px; 
 }
 
-.ri-checkbox-indeterminate-line {
+.status {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

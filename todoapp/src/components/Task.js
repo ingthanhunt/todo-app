@@ -1,5 +1,4 @@
 function Task({text, date, isDone, done, remove, update}) {
-    //const [isDone, setDone] = useState(false);
 
     const formatDate = (date) => {
         const day = String(date).split("T")[0].split("-");  
@@ -20,7 +19,13 @@ function Task({text, date, isDone, done, remove, update}) {
 
     return (
         <div className="todo" style={{ backgroundColor: taskTheme.backgroundColor, color: taskTheme.color}}>
-            <i className="ri-checkbox-indeterminate-line" onClick={done}></i>
+            <div className="status">
+                {isDone ? (
+                    <i className="ri-checkbox-line"></i>
+                ) : (
+                    <i className="ri-checkbox-blank-line" onClick={done}></i>
+                )}
+            </div>
             <div className = "text">{text}</div>
             <div className = "date">{formatDate(date)}</div>
             <div className= "icons">
